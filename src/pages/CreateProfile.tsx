@@ -40,12 +40,17 @@ export const CreateProfile: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 
+      className="relative flex flex-col justify-center items-center min-h-[100dvh] py-12 px-4 sm:px-6
                  bg-gradient-to-b from-[#f9f9ff] via-[#eef5ff] to-white overflow-visible"
+      style={{ overflowX: 'hidden', WebkitOverflowScrolling: 'touch' }}
     >
       {/* Background wave */}
       <div className="absolute inset-0 pointer-events-none">
-        <svg className="absolute bottom-0 w-full opacity-30" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <svg
+          className="absolute bottom-0 w-full opacity-30"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
           <motion.path
             fill="rgba(0,184,255,0.08)"
             d="M0,160L60,170C120,180,240,200,360,190C480,180,600,140,720,130C840,120,960,140,1080,150C1200,160,1320,160,1380,160L1440,160L1440,320L0,320Z"
@@ -60,7 +65,7 @@ export const CreateProfile: React.FC = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 w-full max-w-md sm:max-w-lg mx-auto text-center">
+      <div className="relative z-10 w-full max-w-md sm:max-w-lg mx-auto text-center overflow-visible">
         {!created ? (
           <>
             <motion.h2
@@ -120,7 +125,7 @@ export const CreateProfile: React.FC = () => {
               {/* Subdomain */}
               <div className="text-left">
                 <label className="text-sm font-semibold text-gray-700">Tên subdomain</label>
-                <div className="relative flex flex-wrap sm:flex-nowrap items-center border border-gray-300 rounded-xl px-3 py-2 mt-1">
+                <div className="relative flex flex-wrap items-center border border-gray-300 rounded-xl px-3 py-2 mt-1 bg-white">
                   <input
                     type="text"
                     value={subdomain}
@@ -128,11 +133,9 @@ export const CreateProfile: React.FC = () => {
                       setSubdomain(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))
                     }
                     placeholder="tenban"
-                    className="flex-1 bg-transparent outline-none text-sm min-w-[130px]"
+                    className="flex-1 bg-transparent outline-none text-sm min-w-[120px]"
                   />
-                  <span className="text-gray-500 text-sm sm:ml-2 break-all">
-                    .profile.io.vn
-                  </span>
+                  <span className="text-gray-500 text-sm break-all">.profile.io.vn</span>
                 </div>
 
                 {/* Domain check */}
@@ -154,7 +157,7 @@ export const CreateProfile: React.FC = () => {
                           <CheckIcon className="w-4 h-4" />
                           <span>Tên miền khả dụng!</span>
                         </div>
-                        <div className="flex flex-wrap justify-center items-center gap-1 text-[#00b8ff] text-xs sm:text-sm font-semibold mt-1 break-all">
+                        <div className="flex flex-wrap justify-center items-center gap-1 text-[#00b8ff] text-xs sm:text-sm font-semibold mt-1 break-all text-center">
                           <GlobeIcon className="w-4 h-4" />
                           <a
                             href={`https://${subdomain}.profile.io.vn`}
@@ -167,7 +170,9 @@ export const CreateProfile: React.FC = () => {
                         </div>
                       </>
                     ) : (
-                      <div className="text-red-500 text-xs sm:text-sm">❌ Tên miền đã được sử dụng.</div>
+                      <div className="text-red-500 text-xs sm:text-sm">
+                        ❌ Tên miền đã được sử dụng.
+                      </div>
                     )}
                   </motion.div>
                 )}
