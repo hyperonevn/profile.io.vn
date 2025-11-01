@@ -25,10 +25,10 @@ export const Footer: React.FC = () => {
   return (
     <footer
       ref={ref}
-      className="relative py-20 px-6 border-t border-white/10 bg-gradient-to-b from-gray-950 via-black to-black overflow-hidden"
+      className="relative py-20 px-6 border-t border-gray-200 bg-gradient-to-b from-white via-[#f9f9ff] to-[#eef5ff] overflow-hidden text-gray-800"
     >
       {/* Gradient line top */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[220px] h-[2px] bg-gradient-to-r from-red-400 via-yellow-300 to-red-400 opacity-60" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[220px] h-[2px] bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] opacity-60" />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
@@ -45,18 +45,23 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="flex items-baseline gap-2 select-none relative z-10"
             >
-              <span className="text-[#00c2ff] text-4xl font-extrabold tracking-tight">
+              <span className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent">
                 HYPER
               </span>
-              <span className="text-white text-4xl font-extrabold tracking-tight">
-                ONE
+              <span className="text-4xl font-extrabold text-gray-900 tracking-tight">
+                ME
               </span>
             </a>
-            {/* Hover glow */}
-            <div className="absolute inset-0 rounded-3xl blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-700 bg-[#00c2ff]/30"></div>
 
-            <p className="text-white/70 text-base max-w-3xl leading-relaxed mt-2">
-              Vietnam’s Leading AI Innovation Hub · Tiên phong phát triển giải pháp Trí tuệ Nhân tạo và Tự động hóa thực chiến.
+            {/* Hover glow */}
+            <div className="absolute inset-0 rounded-3xl blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-700 bg-gradient-to-r from-[#00b8ff]/30 via-[#8b5cf6]/30 to-[#ec4899]/30"></div>
+
+            <p className="text-gray-600 text-base max-w-3xl leading-relaxed mt-2">
+              <span className="font-semibold bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent">
+                HYPER ME
+              </span>{' '}
+              – Nền tảng định danh cá nhân dành cho người Việt.<br />
+              Nơi mỗi câu chuyện trở thành một hành trình kết nối toàn cầu.
             </p>
           </div>
 
@@ -74,18 +79,18 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-12 h-12 bg-white/5 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/10 hover:bg-gradient-to-br hover:from-red-400/30 hover:to-yellow-300/30 hover:border-white/20 transition-all"
+                className="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-[#00b8ff]/20 hover:to-[#8b5cf6]/20 transition-all shadow-sm"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <social.icon className="w-6 h-6 text-white/80" />
+                <social.icon className="w-6 h-6 text-gray-700" />
               </motion.a>
             ))}
           </motion.div>
 
           {/* Hotline */}
           <motion.div
-            className="text-center text-white/70 text-base font-medium"
+            className="text-center text-gray-700 text-base font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -94,7 +99,7 @@ export const Footer: React.FC = () => {
               href="https://zalo.me/0352608068"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-[#00c2ff] transition-colors"
+              className="inline-flex items-center gap-2 hover:text-[#00b8ff] transition-colors"
             >
               <PhoneIcon className="w-5 h-5" />
               Hotline / Zalo: 0352608068
@@ -102,7 +107,7 @@ export const Footer: React.FC = () => {
           </motion.div>
 
           {/* Divider */}
-          <div className="w-full h-[1px] bg-white/10 my-8" />
+          <div className="w-full h-[1px] bg-gray-200 my-8" />
 
           {/* Copyright */}
           <motion.div
@@ -111,9 +116,13 @@ export const Footer: React.FC = () => {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <p className="text-white/40 text-xs mt-2">
-              © {new Date().getFullYear()} HYPER ID · All rights reserved. Powered by{' '}
-              <span className="text-[#00c2ff] font-semibold">HYPER ONE</span>
+            <p className="text-gray-500 text-xs mt-2">
+              © {new Date().getFullYear()}{' '}
+              <span className="font-semibold bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent">
+                HYPER ME
+              </span>{' '}
+              · All rights reserved. Powered by{' '}
+              <span className="text-[#8b5cf6] font-semibold">HYPER ONE</span>
             </p>
           </motion.div>
         </motion.div>

@@ -1,27 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -30,6 +6,7 @@ import {
   FacebookIcon,
   MessageCircleIcon,
   PhoneIcon,
+  CheckCircle2Icon,
 } from 'lucide-react';
 import profile from '../data/profile.json';
 
@@ -82,13 +59,24 @@ export const AnimatedMockup: React.FC = () => {
 
             {/* Name + Role */}
             <div className="space-y-0.5 pt-1">
-              <h3 className="text-lg font-bold text-white drop-shadow">
-                {profile.full_name}
-              </h3>
+              <div className="flex items-center justify-center gap-1.5">
+                <h3 className="text-lg font-bold text-white drop-shadow">
+                  {profile.full_name}
+                </h3>
+                <CheckCircle2Icon className="w-4 h-4 text-[#00b8ff] drop-shadow-[0_0_6px_rgba(0,184,255,0.6)]" />
+              </div>
               <p className="text-xs text-gray-200">{profile.english_name}</p>
-              <p className="text-[11px] font-semibold text-white/90">{profile.roles}</p>
-              <p className="text-[11px] font-bold text-pink-300">{profile.company_bold}</p>
-              <p className="text-[11px] text-white/80 italic mt-0.5">{profile.position}</p>
+
+              {/* ✅ ĐẨY CHỨC DANH LÊN TRÊN CÔNG TY */}
+              <p className="text-[11px] text-white/90 font-semibold mt-0.5">
+                {profile.position}
+              </p>
+
+              <p className="text-[11px] font-bold text-pink-300">
+                {profile.company_bold}
+              </p>
+
+              <p className="text-[11px] text-white/70">{profile.roles}</p>
             </div>
 
             {/* Giới thiệu nhân văn */}
@@ -155,7 +143,7 @@ export const AnimatedMockup: React.FC = () => {
             <div className="text-[10px] text-gray-200 leading-tight pt-3">
               <p>{profile.location}</p>
               <p className="pt-0.5">Ngôn ngữ: {profile.language.join(' ')}</p>
-              <p className="text-[9px] text-white/50 pt-1">© 2025 HYPER ID</p>
+              <p className="text-[9px] text-white/50 pt-1">© 2025 HYPER ME</p>
             </div>
           </div>
         </div>

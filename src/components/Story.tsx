@@ -11,13 +11,13 @@ export const Story: React.FC = () => {
       icon: HeartIcon,
       title: 'Nhân văn và Tự hào',
       description:
-        'Mỗi người Việt đều có một câu chuyện, một hành trình, một lý do để tự hào. HYPER ID sinh ra để giúp bạn kể câu chuyện đó bằng chính ngôn ngữ của cảm xúc và công nghệ.',
+        'Mỗi người Việt đều có một câu chuyện, một hành trình, một lý do để tự hào. HYPER ME sinh ra để giúp bạn kể câu chuyện đó bằng chính ngôn ngữ của cảm xúc và công nghệ.',
     },
     {
       icon: SparklesIcon,
       title: 'Công nghệ vì con người',
       description:
-        'Không phải chạy theo xu hướng mà là dùng công nghệ để lưu giữ giá trị, lan tỏa bản sắc và truyền cảm hứng sống. Với HYPER ID, công nghệ trở thành tấm gương phản chiếu linh hồn Việt.',
+        'Không phải chạy theo xu hướng mà là dùng công nghệ để lưu giữ giá trị, lan tỏa bản sắc và truyền cảm hứng sống. Với HYPER ME, công nghệ trở thành tấm gương phản chiếu linh hồn Việt.',
     },
     {
       icon: UsersIcon,
@@ -56,7 +56,7 @@ export const Story: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          HYPER ID không chỉ là một nền tảng mà còn là một phong trào.  
+          HYPER ME không chỉ là một nền tảng mà còn là một phong trào.  
           Nơi người Việt Nam tự tin bước ra thế giới,  
           mang theo câu chuyện, giá trị và lòng tự tôn dân tộc,  
           được viết nên bằng sức mạnh của công nghệ và niềm tin vào chính mình.

@@ -1,12 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HyperIDLogo } from '../assets/logos/HyperIDLogo';
+import { HyperMELogo } from '../assets/logos/HyperMELogo';
 import { ArrowRightIcon } from 'lucide-react';
 import { AnimatedMockup } from './AnimatedMockup';
 
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-visible py-20 px-6 bg-gradient-to-b from-[#eaf4ff] via-[#f9f5ff] to-white text-gray-900">
+      {/* Header inside Hero (not fixed) */}
+      <motion.div
+        className="absolute top-6 right-6 flex items-center gap-2 bg-white/70 backdrop-blur-md border border-gray-300 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <span className="text-xs text-gray-600">Powered by</span>
+        <a
+          href="https://hyperonevn.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-baseline gap-1 select-none"
+        >
+          <span className="text-[#00b8ff] font-bold text-sm tracking-tight">
+            HYPER
+          </span>
+          <span className="text-gray-900 font-bold text-sm tracking-tight">
+            ONE
+          </span>
+        </a>
+      </motion.div>
+
       {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -27,25 +50,6 @@ export const Hero: React.FC = () => {
         ))}
       </div>
 
-      {/* Powered by HYPER ONE – fixed top right */}
-      <motion.div
-        className="fixed top-4 right-4 flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-gray-300 shadow-md hover:shadow-lg transition-all z-[9999]"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <span className="text-xs text-gray-600">Powered by</span>
-        <a
-          href="https://hyperonevn.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-baseline gap-1 select-none"
-        >
-          <span className="text-[#00b8ff] font-bold text-sm tracking-tight">HYPER</span>
-          <span className="text-gray-900 font-bold text-sm tracking-tight">ONE</span>
-        </a>
-      </motion.div>
-
       {/* Main content */}
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -56,7 +60,7 @@ export const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <HyperIDLogo className="mx-auto lg:mx-0" />
+            <HyperMELogo className="mx-auto lg:mx-0" />
 
             {/* Title */}
             <motion.h1
@@ -69,7 +73,7 @@ export const Hero: React.FC = () => {
                 &lt;Tên bạn&gt;.profile.io.vn
               </span>
               <span className="text-gray-800 text-xl sm:text-2xl md:text-3xl font-medium">
-                Hồ sơ cá nhân sở hữu domain riêng.
+                Trang cá nhân thể hiện chính bạn.
               </span>
             </motion.h1>
 
@@ -80,7 +84,8 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Nơi mỗi liên kết kể một câu chuyện. Hãy tạo trang cá nhân của riêng bạn và kể câu chuyện của bạn.
+              Nơi mỗi liên kết kể một câu chuyện. Hãy tạo trang cá nhân của riêng bạn với{' '}
+              <span className="font-semibold text-[#00b8ff]">HYPER ME</span>.
             </motion.p>
 
             {/* Demo Links */}
@@ -91,12 +96,12 @@ export const Hero: React.FC = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <a
-                href="https://hyperone.profile.io.vn"
+                href="https://hyperme.profile.io.vn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white border border-gray-300 rounded-xl py-3 px-6 text-gray-700 hover:text-[#00b8ff] hover:border-[#00b8ff] transition-all text-base font-medium shadow-sm whitespace-nowrap"
               >
-                hyperone.profile.io.vn
+                hyperme.profile.io.vn
               </a>
               <a
                 href="https://luminhtri.profile.io.vn"
@@ -142,7 +147,8 @@ export const Hero: React.FC = () => {
               transition={{ delay: 1, duration: 0.8 }}
             >
               Đăng ký sớm để sở hữu{' '}
-              <span className="text-[#00b8ff] font-semibold">tên miền đẹp đầu tiên</span> trên .profile.io.vn — chỉ dành cho những người tiên phong.
+              <span className="text-[#00b8ff] font-semibold">tên miền đẹp đầu tiên</span> trên .profile.io.vn cùng{' '}
+              <span className="font-semibold text-[#8b5cf6]">HYPER ME</span>.
             </motion.p>
           </motion.div>
 
