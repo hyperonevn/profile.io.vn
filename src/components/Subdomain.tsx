@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { CheckIcon } from 'lucide-react';
+import { CheckIcon, GlobeIcon } from 'lucide-react';
 
 export const Subdomain: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -91,14 +91,28 @@ export const Subdomain: React.FC = () => {
               </span>
             </div>
 
+            {/* ✅ Khi có subdomain nhập vào */}
             {subdomain && (
               <motion.div
-                className="mt-2 flex items-center justify-center gap-1.5 text-green-600 text-xs sm:text-sm"
+                className="mt-3 text-center space-y-1"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <CheckIcon className="w-4 h-4" />
-                <span>Tên miền khả dụng!</span>
+                <div className="flex items-center justify-center gap-1.5 text-green-600 text-xs sm:text-sm">
+                  <CheckIcon className="w-4 h-4" />
+                  <span>Tên miền khả dụng!</span>
+                </div>
+
+                <motion.a
+                  href={`https://${subdomain}.profile.io.vn`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1 text-[#00b8ff] text-xs sm:text-sm font-semibold hover:underline"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <GlobeIcon className="w-4 h-4" />
+                  https://{subdomain}.profile.io.vn
+                </motion.a>
               </motion.div>
             )}
           </motion.div>
