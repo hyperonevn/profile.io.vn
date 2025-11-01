@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { CheckIcon, Loader2Icon, GlobeIcon, SparklesIcon } from 'lucide-react';
+import { CheckIcon, Loader2Icon, GlobeIcon } from 'lucide-react';
 
 export const CreateProfile: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -10,23 +10,19 @@ export const CreateProfile: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [subdomain, setSubdomain] = useState('');
-
   const [checking, setChecking] = useState(false);
   const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
-
   const [loading, setLoading] = useState(false);
   const [created, setCreated] = useState(false);
 
-  // Giả lập kiểm tra tên miền
   useEffect(() => {
     if (!subdomain) {
       setIsAvailable(null);
       return;
     }
     setChecking(true);
-    setIsAvailable(null);
     const timer = setTimeout(() => {
-      setIsAvailable(true); // mock: luôn khả dụng
+      setIsAvailable(true);
       setChecking(false);
     }, 1000);
     return () => clearTimeout(timer);
@@ -44,7 +40,7 @@ export const CreateProfile: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center items-center py-20 px-4
+      className="relative min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 
                  bg-gradient-to-b from-[#f9f9ff] via-[#eef5ff] to-white overflow-visible"
     >
       {/* Background wave */}
@@ -64,76 +60,67 @@ export const CreateProfile: React.FC = () => {
         </svg>
       </div>
 
-      {/* Main form */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto text-center overflow-visible">
+      <div className="relative z-10 w-full max-w-md sm:max-w-lg mx-auto text-center">
         {!created ? (
           <>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-8"
-              initial={{ opacity: 0, y: 40 }}
+              className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-snug"
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              Trang cá nhân sở hữu domain riêng của bạn
+              Tạo hồ sơ cá nhân{' '}
+              <span className="bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent">
+                HYPER ME
+              </span>
             </motion.h2>
 
             <motion.div
-              className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 sm:p-10 space-y-6
-                         border border-gray-200 overflow-visible text-left"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-5 sm:p-8 space-y-4 border border-gray-200"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <h3 className="text-xl font-semibold text-gray-800 text-center mb-2">
-                Tạo hồ sơ cá nhân{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6]">
-                  MIỄN PHÍ
-                </span>
-              </h3>
-
               {/* Họ tên */}
-              <div>
+              <div className="text-left">
                 <label className="text-sm font-semibold text-gray-700">Họ tên</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Nhập họ tên của bạn"
-                  className="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300
-                             focus:ring-2 focus:ring-[#00b8ff] outline-none text-sm"
+                  className="w-full mt-1 px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#00b8ff] outline-none text-sm"
                 />
               </div>
 
               {/* Số điện thoại */}
-              <div>
+              <div className="text-left">
                 <label className="text-sm font-semibold text-gray-700">Số điện thoại</label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
-                  placeholder="Nhập số điện thoại của bạn"
-                  className="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300
-                             focus:ring-2 focus:ring-[#8b5cf6] outline-none text-sm"
+                  placeholder="Nhập số điện thoại"
+                  className="w-full mt-1 px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#8b5cf6] outline-none text-sm"
                 />
               </div>
 
               {/* Email */}
-              <div>
+              <div className="text-left">
                 <label className="text-sm font-semibold text-gray-700">Email (tuỳ chọn)</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full mt-1 px-4 py-3 rounded-xl border border-gray-300
-                             focus:ring-2 focus:ring-[#00b8ff] outline-none text-sm"
+                  className="w-full mt-1 px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#00b8ff] outline-none text-sm"
                 />
               </div>
 
-              {/* Subdomain (moved last for clarity) */}
-              <div>
+              {/* Subdomain */}
+              <div className="text-left">
                 <label className="text-sm font-semibold text-gray-700">Tên subdomain</label>
-                <div className="relative flex items-center border border-gray-300 rounded-xl px-3 py-3 mt-1">
+                <div className="relative flex flex-wrap sm:flex-nowrap items-center border border-gray-300 rounded-xl px-3 py-2 mt-1">
                   <input
                     type="text"
                     value={subdomain}
@@ -141,9 +128,11 @@ export const CreateProfile: React.FC = () => {
                       setSubdomain(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))
                     }
                     placeholder="tenban"
-                    className="flex-1 bg-transparent outline-none text-sm"
+                    className="flex-1 bg-transparent outline-none text-sm min-w-[130px]"
                   />
-                  <span className="text-gray-500 text-sm">.profile.io.vn</span>
+                  <span className="text-gray-500 text-sm sm:ml-2 break-all">
+                    .profile.io.vn
+                  </span>
                 </div>
 
                 {/* Domain check */}
@@ -155,17 +144,17 @@ export const CreateProfile: React.FC = () => {
                     transition={{ duration: 0.3 }}
                   >
                     {checking ? (
-                      <div className="flex items-center gap-1.5 text-blue-500 text-sm">
+                      <div className="flex items-center gap-1.5 text-blue-500 text-xs sm:text-sm">
                         <Loader2Icon className="w-4 h-4 animate-spin" />
                         <span>Đang kiểm tra tên miền...</span>
                       </div>
                     ) : isAvailable ? (
                       <>
-                        <div className="flex items-center gap-1.5 text-green-600 text-sm mb-1">
+                        <div className="flex items-center gap-1.5 text-green-600 text-xs sm:text-sm mb-1">
                           <CheckIcon className="w-4 h-4" />
                           <span>Tên miền khả dụng!</span>
                         </div>
-                        <div className="flex items-center justify-center gap-1 text-[#00b8ff] text-sm font-semibold mt-2">
+                        <div className="flex flex-wrap justify-center items-center gap-1 text-[#00b8ff] text-xs sm:text-sm font-semibold mt-1 break-all">
                           <GlobeIcon className="w-4 h-4" />
                           <a
                             href={`https://${subdomain}.profile.io.vn`}
@@ -178,7 +167,7 @@ export const CreateProfile: React.FC = () => {
                         </div>
                       </>
                     ) : (
-                      <div className="text-red-500 text-sm">❌ Tên miền đã được sử dụng.</div>
+                      <div className="text-red-500 text-xs sm:text-sm">❌ Tên miền đã được sử dụng.</div>
                     )}
                   </motion.div>
                 )}
@@ -188,11 +177,11 @@ export const CreateProfile: React.FC = () => {
               <motion.button
                 onClick={handleCreate}
                 disabled={loading}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-                className="w-full mt-6 flex items-center justify-center gap-2 py-3
-                           bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] text-white 
-                           rounded-full font-semibold shadow-lg hover:shadow-[0_0_25px_rgba(0,184,255,0.5)]
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full mt-5 flex items-center justify-center gap-2 py-3 text-sm sm:text-base 
+                           bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] text-white rounded-full 
+                           font-semibold shadow-lg hover:shadow-[0_0_25px_rgba(0,184,255,0.5)] 
                            transition-all"
               >
                 {loading ? (
@@ -201,44 +190,44 @@ export const CreateProfile: React.FC = () => {
                     Đang khởi tạo hồ sơ...
                   </>
                 ) : (
-                  <>🚀 TẠO HỒ SƠ MIỄN PHÍ SỞ HỮU DOMAIN</>
+                  <>🚀 Tạo hồ sơ miễn phí ngay</>
                 )}
               </motion.button>
 
-              <p className="text-xs text-center text-gray-500 mt-3">
+              <p className="text-[11px] sm:text-xs text-center text-gray-500 mt-2">
                 ⚡ Số lượng subdomain đẹp có hạn — đăng ký ngay hôm nay!
               </p>
             </motion.div>
           </>
         ) : (
-          /* Success state */
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center space-y-4 p-8 bg-white/70 rounded-2xl shadow-lg"
+            className="text-center space-y-4 p-6 sm:p-8 bg-white/70 rounded-2xl shadow-lg"
           >
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
               🎉 Hồ sơ của bạn đã được tạo thành công!
             </h3>
             <motion.a
               href={`https://${subdomain}.profile.io.vn`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#00b8ff] font-semibold text-sm sm:text-base underline"
+              className="text-[#00b8ff] font-semibold text-sm underline"
               whileHover={{ scale: 1.05 }}
             >
               https://{subdomain}.profile.io.vn
             </motion.a>
             <p className="text-gray-600 text-sm">
-              Bước tiếp theo: xác thực qua <span className="font-semibold text-[#8b5cf6]">Hyper Bot</span>
+              Bước tiếp theo: xác thực qua{' '}
+              <span className="font-semibold text-[#8b5cf6]">Hyper Bot</span>
             </p>
             <motion.a
               href={`https://zalo.me/hyperbot?phone=${phone}`}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
-              className="inline-block mt-3 px-6 py-2 bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6]
-                         text-white rounded-full font-semibold shadow-md"
+              className="inline-block mt-3 px-5 py-2.5 bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6]
+                         text-white rounded-full font-semibold text-sm shadow-md"
             >
               Xác thực ngay
             </motion.a>
