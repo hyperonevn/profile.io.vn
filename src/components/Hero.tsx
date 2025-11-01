@@ -6,18 +6,18 @@ import { AnimatedMockup } from './AnimatedMockup';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-6 bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible py-20 px-6 bg-gradient-to-b from-[#eaf4ff] via-[#f9f5ff] to-white text-gray-900">
       {/* Background particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full"
+            className="absolute w-2 h-2 bg-[#a3cfff]/40 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
-            animate={{ y: [0, -30, 0], opacity: [0.2, 0.5, 0.2] }}
+            animate={{ y: [0, -30, 0], opacity: [0.3, 0.7, 0.3] }}
             transition={{
               duration: 3 + Math.random() * 2,
               repeat: Infinity,
@@ -28,22 +28,28 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Powered by HYPER ONE – fixed top right */}
-      <div className="fixed top-5 right-5 flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:border-[#00c2ff]/40 transition-all z-50">
-        <span className="text-xs text-white/70">Powered by</span>
+      <motion.div
+        className="fixed top-4 right-4 flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-gray-300 shadow-md hover:shadow-lg transition-all z-[9999]"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <span className="text-xs text-gray-600">Powered by</span>
         <a
           href="https://hyperonevn.com"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-baseline gap-1 select-none"
         >
-          <span className="text-[#00c2ff] font-bold text-sm tracking-tight">HYPER</span>
-          <span className="text-white font-bold text-sm tracking-tight">ONE</span>
+          <span className="text-[#00b8ff] font-bold text-sm tracking-tight">HYPER</span>
+          <span className="text-gray-900 font-bold text-sm tracking-tight">ONE</span>
         </a>
-      </div>
+      </motion.div>
 
+      {/* Main content */}
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+          {/* Left side */}
           <motion.div
             className="space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
@@ -52,24 +58,24 @@ export const Hero: React.FC = () => {
           >
             <HyperIDLogo className="mx-auto lg:mx-0" />
 
-            {/* Tiêu đề */}
+            {/* Title */}
             <motion.h1
-              className="text-3xl md:text-4xl font-semibold text-white flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 flex-wrap"
+              className="font-semibold flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 flex-wrap text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <span className="bg-gradient-to-r from-pink-300 to-purple-300 bg-clip-text text-transparent font-bold text-4xl md:text-5xl">
+              <span className="bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent font-bold text-3xl sm:text-4xl md:text-5xl">
                 &lt;Tên bạn&gt;.profile.io.vn
               </span>
-              <span className="text-white/90 text-2xl md:text-3xl font-medium">
+              <span className="text-gray-800 text-xl sm:text-2xl md:text-3xl font-medium">
                 Hồ sơ cá nhân sở hữu domain riêng.
               </span>
             </motion.h1>
 
             {/* Tagline */}
             <motion.p
-              className="text-lg md:text-xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -77,7 +83,7 @@ export const Hero: React.FC = () => {
               Nơi mỗi liên kết kể một câu chuyện. Hãy tạo trang cá nhân của riêng bạn và kể câu chuyện của bạn.
             </motion.p>
 
-            {/* Demo Examples */}
+            {/* Demo Links */}
             <motion.div
               className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mt-4"
               initial={{ opacity: 0, y: 20 }}
@@ -88,7 +94,7 @@ export const Hero: React.FC = () => {
                 href="https://hyperone.profile.io.vn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 border border-white/20 rounded-xl py-3 px-6 text-white/90 hover:text-pink-300 hover:border-pink-400 transition-all text-base font-medium backdrop-blur-sm whitespace-nowrap"
+                className="bg-white border border-gray-300 rounded-xl py-3 px-6 text-gray-700 hover:text-[#00b8ff] hover:border-[#00b8ff] transition-all text-base font-medium shadow-sm whitespace-nowrap"
               >
                 hyperone.profile.io.vn
               </a>
@@ -96,7 +102,7 @@ export const Hero: React.FC = () => {
                 href="https://luminhtri.profile.io.vn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 border border-white/20 rounded-xl py-3 px-6 text-white/90 hover:text-pink-300 hover:border-pink-400 transition-all text-base font-medium backdrop-blur-sm whitespace-nowrap"
+                className="bg-white border border-gray-300 rounded-xl py-3 px-6 text-gray-700 hover:text-[#8b5cf6] hover:border-[#8b5cf6] transition-all text-base font-medium shadow-sm whitespace-nowrap"
               >
                 luminhtri.profile.io.vn
               </a>
@@ -110,7 +116,7 @@ export const Hero: React.FC = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
             >
               <motion.button
-                className="group px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white rounded-full font-semibold text-lg shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.7)] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+                className="group px-8 py-4 bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] text-white rounded-full font-semibold text-lg shadow-[0_0_20px_rgba(0,184,255,0.4)] hover:shadow-[0_0_35px_rgba(0,184,255,0.6)] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
                 whileHover={{ scale: 1.07 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -120,7 +126,7 @@ export const Hero: React.FC = () => {
 
               <motion.a
                 href="#story"
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold text-lg border-2 border-white/30 hover:bg-white/20 hover:text-pink-300 transition-all whitespace-nowrap"
+                className="px-8 py-4 bg-white text-gray-800 rounded-full font-semibold text-lg border-2 border-gray-300 hover:bg-gray-100 transition-all whitespace-nowrap"
                 whileHover={{ scale: 1.07 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -130,17 +136,17 @@ export const Hero: React.FC = () => {
 
             {/* Note */}
             <motion.p
-              className="text-white/70 text-sm md:text-base mt-4 font-medium"
+              className="text-gray-600 text-sm md:text-base mt-4 font-medium"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
               Đăng ký sớm để sở hữu{' '}
-              <span className="text-pink-300 font-semibold">tên miền đẹp đầu tiên</span> trên .profile.io.vn — chỉ dành cho những người tiên phong.
+              <span className="text-[#00b8ff] font-semibold">tên miền đẹp đầu tiên</span> trên .profile.io.vn — chỉ dành cho những người tiên phong.
             </motion.p>
           </motion.div>
 
-          {/* Right Content */}
+          {/* Right side mockup */}
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, x: 50 }}
