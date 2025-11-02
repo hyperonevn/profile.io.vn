@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HyperMELogo } from '../assets/logos/HyperMELogo';
-import { ArrowRightIcon, CheckIcon, Loader2Icon } from 'lucide-react';
+import { CheckIcon, Loader2Icon } from 'lucide-react';
 import { AnimatedMockup } from './AnimatedMockup';
 
 export const Hero: React.FC = () => {
   const [name, setName] = useState('');
-  const [subdomain, setSubdomain] = useState('');
+  const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
@@ -14,248 +14,194 @@ export const Hero: React.FC = () => {
 
   const handleCheck = (value: string) => {
     const clean = value.toLowerCase().replace(/[^a-z0-9-]/g, '');
-    setSubdomain(clean);
+    setAddress(clean);
     if (!clean) return setIsAvailable(null);
     setIsAvailable(clean !== 'hyperone' && clean !== 'admin' && clean !== 'demo');
   };
 
   const handleCreate = async () => {
-    if (!name || !phone || !subdomain) {
+    if (!name || !phone || !address) {
       alert('Vui lòng nhập đầy đủ thông tin.');
       return;
     }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     setCreated(true);
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-visible py-20 px-6 bg-gradient-to-b from-[#eaf4ff] via-[#f9f5ff] to-white text-gray-900">
-      {/* Header */}
-      <motion.div
-        className="absolute top-6 right-6 flex items-center gap-2 bg-white/70 backdrop-blur-md border border-gray-300 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="text-xs text-gray-600">Powered by</span>
+    <section
+      id="hero"
+      className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#f9fbff] via-[#f3f0ff] to-white text-gray-900 px-4 pt-14 sm:pt-20 pb-24 overflow-visible"
+    >
+      {/* header góc phải */}
+      <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/60 px-3 py-1 rounded-full text-[10px] sm:text-xs border border-gray-300 shadow-sm">
+        <span className="text-gray-600">Powered by</span>
         <a
           href="https://hyperonevn.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-baseline gap-1 select-none"
+          className="flex items-center gap-0.5 font-bold text-gray-900"
         >
-          <span className="text-[#00b8ff] font-bold text-sm tracking-tight">HYPER</span>
-          <span className="text-gray-900 font-bold text-sm tracking-tight">ONE</span>
+          <span className="text-[#00b8ff]">HYPER</span>ONE
         </a>
-      </motion.div>
+      </div>
 
-      {/* Background particles */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* background particles */}
+      <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-[#a3cfff]/40 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{ y: [0, -30, 0], opacity: [0.3, 0.7, 0.3] }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#a3cfff]/40"
+            style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+            animate={{ y: [0, -25, 0], opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: Math.random() * 2 }}
           />
         ))}
       </div>
 
-      {/* Main content */}
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side */}
-          <motion.div
-            className="space-y-8 text-center lg:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <HyperMELogo className="mx-auto lg:mx-0" />
+      {/* 🩵 LOGO + TIÊU ĐỀ */}
+      <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="z-10 text-center mb-8 sm:mb-12 max-w-xl"
+      >
+        {/* Logo */}
+        <motion.div
+          className="relative flex justify-center"
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <div className="absolute w-48 sm:w-80 h-48 sm:h-80 bg-gradient-to-tr from-[#00b8ff]/30 via-[#8b5cf6]/30 to-[#ec4899]/30 blur-3xl rounded-full -z-10" />
+          <HyperMELogo className="w-40 sm:w-60 drop-shadow-[0_0_25px_rgba(0,184,255,0.3)]" />
+        </motion.div>
 
-            {/* Title */}
-            <motion.h1
-              className="font-semibold text-gray-900 text-3xl sm:text-4xl md:text-5xl flex flex-col lg:flex-row flex-wrap justify-center lg:justify-start gap-3 lg:gap-4 whitespace-nowrap"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              <span className="bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] bg-clip-text text-transparent font-extrabold">
-                &lt;Tên bạn&gt;.profile.io.vn
-              </span>
-              <span className="text-gray-800 font-medium">
-                Trang cá nhân sở hữu domain riêng.
-              </span>
-            </motion.h1>
+        {/* Domain tagline */}
+        <h1 className="mt-6 text-xl sm:text-4xl font-extrabold leading-snug text-gray-900 px-3">
+          <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
+            &lt;Tên bạn&gt;.profile.io.vn
+          </span>
+        </h1>
 
-            {/* Tagline */}
-            <motion.p
-              className="text-base sm:text-lg md:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
-              Nơi mỗi liên kết kể một câu chuyện tạo hồ sơ của riêng bạn với{' '}
-              <span className="font-semibold text-[#00b8ff]">HYPER ME</span>.
-            </motion.p>
+        {/* Slogan */}
+        <p className="mt-2 text-sm sm:text-lg text-gray-700 font-medium px-5 sm:px-0">
+          Trang cá nhân có địa chỉ web riêng của bạn.{' '}
+          <span className="text-[#00b8ff] font-semibold">
+            Nổi bật. Đơn giản. Chuyên nghiệp.
+          </span>
+        </p>
 
-            {/* Inline Create Form */}
-            <motion.div
-              className="relative mt-10 bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8 w-full max-w-md mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              {!created ? (
-                <>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4 whitespace-nowrap">
-                    Tạo hồ sơ cá nhân <span className="text-[#00b8ff] font-bold">MIỄN PHÍ</span>
-                  </h3>
+        {/* CTA text */}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+          className="mt-5 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] rounded-full shadow-lg text-white font-bold text-sm sm:text-base whitespace-nowrap"
+        >
+          TẠO HỒ SƠ BÊN DƯỚI
+        </motion.div>
+      </motion.div>
 
-                  {/* Name */}
-                  <div className="mb-3 text-left">
-                    <label className="text-sm font-semibold text-gray-700">Họ tên</label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Nhập họ tên"
-                      className="w-full mt-1 px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#00b8ff] outline-none text-sm"
-                    />
-                  </div>
+      {/* 💠 FORM + MOCKUP song song trên desktop */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-16 mt-6 sm:mt-10 z-10">
+        {/* FORM */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl shadow-xl p-5 sm:p-8 w-[90vw] max-w-sm sm:max-w-md text-xs sm:text-sm text-center"
+        >
+          {!created ? (
+            <>
+              <div className="text-left mb-2">
+                <label className="text-[11px] font-semibold text-gray-700">Họ tên</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Nhập họ tên"
+                  className="w-full mt-1 px-3 py-1.5 rounded-md border border-gray-300 text-xs outline-none focus:ring-1 focus:ring-[#00b8ff]"
+                />
+              </div>
 
-                  {/* Subdomain */}
-                  <div className="mb-3 text-left">
-                    <label className="text-sm font-semibold text-gray-700">Tên subdomain</label>
-                    <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2 mt-1">
-                      <input
-                        type="text"
-                        value={subdomain}
-                        onChange={(e) => handleCheck(e.target.value)}
-                        placeholder="tenban"
-                        className="flex-1 bg-transparent outline-none text-sm"
-                      />
-                      <span className="text-gray-500 text-sm">.profile.io.vn</span>
-                    </div>
-                    {isAvailable !== null && (
-                      <p
-                        className={`mt-1 flex items-center gap-1 text-xs ${
-                          isAvailable ? 'text-green-600' : 'text-red-500'
-                        }`}
-                      >
-                        <CheckIcon className="w-4 h-4" />{' '}
-                        {isAvailable ? 'Tên miền khả dụng' : 'Tên miền đã được dùng'}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Phone */}
-                  <div className="mb-3 text-left">
-                    <label className="text-sm font-semibold text-gray-700">Số điện thoại</label>
-                    <input
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
-                      placeholder="Nhập số điện thoại"
-                      className="w-full mt-1 px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#8b5cf6] outline-none text-sm"
-                    />
-                  </div>
-
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.07 }}
-                    whileTap={{ scale: 0.96 }}
-                    onClick={handleCreate}
-                    disabled={loading}
-                    className="relative w-full mt-3 inline-flex items-center justify-center gap-2 py-4 px-6 
-                      bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] 
-                      text-white rounded-full font-bold text-lg tracking-tight 
-                      shadow-[0_0_30px_rgba(0,184,255,0.4)] hover:shadow-[0_0_45px_rgba(0,184,255,0.7)] 
-                      whitespace-nowrap transition-all overflow-hidden"
+              <div className="text-left mb-2">
+                <label className="text-[11px] font-semibold text-gray-700">Địa chỉ web cá nhân</label>
+                <div className="flex items-center border border-gray-300 rounded-md px-2 py-1.5 mt-1">
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => handleCheck(e.target.value)}
+                    placeholder="tenban"
+                    className="flex-1 bg-transparent outline-none text-xs"
+                  />
+                  <span className="text-gray-500 text-[11px]">.profile.io.vn</span>
+                </div>
+                {isAvailable !== null && (
+                  <p
+                    className={`mt-1 flex items-center gap-1 text-[10px] ${
+                      isAvailable ? 'text-green-600' : 'text-red-500'
+                    }`}
                   >
-                    {/* ánh sáng quét ngang */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                      initial={{ x: '-100%' }}
-                      animate={{ x: ['-100%', '100%'] }}
-                      transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-                    />
-                    {loading ? (
-                      <>
-                        <Loader2Icon className="w-5 h-5 animate-spin" />
-                        Đang khởi tạo hồ sơ...
-                      </>
-                    ) : (
-                      <>
-                        🚀 <span className="whitespace-nowrap">TẠO HỒ SƠ MIỄN PHÍ SỞ HỮU DOMAIN</span>
-                        <ArrowRightIcon className="w-5 h-5" />
-                      </>
-                    )}
-                  </motion.button>
-
-                  {/* FOMO line */}
-                  <motion.p
-                    className="text-sm text-[#8b5cf6] font-semibold mt-3 tracking-tight whitespace-nowrap"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                  >
-                    ⚡ Số lượng subdomain đẹp có hạn – đăng ký ngay hôm nay!
-                  </motion.p>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center"
-                >
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    🎉 Hồ sơ đã được tạo thành công!
-                  </h3>
-                  <a
-                    href={`https://${subdomain}.profile.io.vn`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#00b8ff] font-semibold text-sm underline"
-                  >
-                    https://{subdomain}.profile.io.vn
-                  </a>
-                  <p className="text-sm text-gray-600 mt-2">
-                    Xác thực qua{' '}
-                    <a
-                      href={`https://zalo.me/hyperbot?phone=${phone}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#8b5cf6] underline font-semibold"
-                    >
-                      Hyper Bot
-                    </a>{' '}
-                    để hoàn tất đăng ký.
+                    <CheckIcon className="w-3 h-3" />{' '}
+                    {isAvailable ? 'Địa chỉ web khả dụng' : 'Địa chỉ này đã có người dùng'}
                   </p>
-                </motion.div>
-              )}
-            </motion.div>
-          </motion.div>
+                )}
+              </div>
 
-          {/* Right side mockup */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <AnimatedMockup />
-          </motion.div>
+              <div className="text-left mb-3">
+                <label className="text-[11px] font-semibold text-gray-700">Số điện thoại</label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
+                  placeholder="Nhập số điện thoại"
+                  className="w-full mt-1 px-3 py-1.5 rounded-md border border-gray-300 text-xs outline-none focus:ring-1 focus:ring-[#8b5cf6]"
+                />
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={handleCreate}
+                disabled={loading}
+                className="relative w-full py-2.5 text-xs sm:text-sm font-bold text-white rounded-full bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] shadow-[0_0_25px_rgba(0,184,255,0.4)] hover:shadow-[0_0_35px_rgba(0,184,255,0.6)] overflow-hidden"
+              >
+                {loading ? (
+                  <>
+                    <Loader2Icon className="inline-block w-4 h-4 mr-1 animate-spin" />
+                    Đang khởi tạo...
+                  </>
+                ) : (
+                  <>🚀 TẠO HỒ SƠ NGAY</>
+                )}
+              </motion.button>
+
+              <p className="text-[10px] text-[#8b5cf6] font-semibold mt-2">
+                ⚡ Số lượng địa chỉ đẹp có hạn. Đăng ký ngay hôm nay!
+              </p>
+            </>
+          ) : (
+            <div className="text-center mt-4">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+                🎉 Hồ sơ đã được tạo thành công!
+              </h3>
+              <a
+                href={`https://${address}.profile.io.vn`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00b8ff] font-semibold text-xs underline block mt-1"
+              >
+                https://{address}.profile.io.vn
+              </a>
+            </div>
+          )}
+        </motion.div>
+
+        {/* Mockup điện thoại */}
+        <div className="relative z-0 mt-10 sm:mt-0 flex justify-center">
+          <AnimatedMockup />
         </div>
       </div>
     </section>
