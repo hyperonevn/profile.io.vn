@@ -32,120 +32,107 @@ export const AnimatedMockup: React.FC = () => {
 
         {/* Screen */}
         <div
-          className="w-full h-full rounded-[1.8rem] overflow-hidden flex flex-col items-center justify-start text-center"
+          className="w-full h-full rounded-[1.8rem] overflow-hidden flex flex-col items-center justify-center text-center relative"
           style={{
             backgroundImage: `url(${profile.cover})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* Overlay */}
-          <div className="w-full h-full bg-black/25 backdrop-blur-[1px] flex flex-col items-center text-center px-4 pt-6 pb-5 space-y-3 text-white rounded-[1.8rem]">
-            
+          {/* Overlay tối nhẹ */}
+          <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px]" />
+
+          {/* Toàn bộ nội dung bên trong, thu nhỏ lại */}
+          <motion.div
+            className="relative z-20 flex flex-col items-center justify-center text-white text-center px-3 py-4 scale-[0.82]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             {/* Avatar */}
-            <motion.div
-              className="relative mt-3 z-20"
-              animate={{ scale: [1, 1.03, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white/90 shadow-[0_0_20px_rgba(255,255,255,0.25)]">
-                <img
-                  src={profile.image}
-                  alt={profile.full_name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
-
-            {/* Name + Role */}
-            <div className="space-y-0.5 pt-1">
-              <div className="flex items-center justify-center gap-1.5">
-                <h3 className="text-lg font-bold text-white drop-shadow">
-                  {profile.full_name}
-                </h3>
-                <CheckCircle2Icon className="w-4 h-4 text-[#00b8ff] drop-shadow-[0_0_6px_rgba(0,184,255,0.6)]" />
-              </div>
-              <p className="text-xs text-gray-200">{profile.english_name}</p>
-
-              {/* ✅ ĐẨY CHỨC DANH LÊN TRÊN CÔNG TY */}
-              <p className="text-[11px] text-white/90 font-semibold mt-0.5">
-                {profile.position}
-              </p>
-
-              <p className="text-[11px] font-bold text-pink-300">
-                {profile.company_bold}
-              </p>
-
-              <p className="text-[11px] text-white/70">{profile.roles}</p>
+            <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white/80 shadow-[0_0_10px_rgba(255,255,255,0.2)] mb-2">
+              <img
+                src={profile.image}
+                alt={profile.full_name}
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            {/* Giới thiệu nhân văn */}
-            <div className="w-full px-2 mt-2">
-              <p className="text-[11px] text-white/80 italic leading-snug">
-                “{profile.intro}”
-              </p>
-            </div>
+            {/* Name + role */}
+            <h3 className="text-base font-bold flex items-center justify-center gap-1">
+              {profile.full_name}
+              <CheckCircle2Icon className="w-3.5 h-3.5 text-[#00b8ff]" />
+            </h3>
+            <p className="text-[11px] text-gray-200">{profile.english_name}</p>
+            <p className="text-[10px] font-semibold mt-0.5">
+              {profile.position}
+            </p>
+            <p className="text-[10px] text-pink-300 font-bold">
+              {profile.company_bold}
+            </p>
+            <p className="text-[10px] text-white/70">{profile.roles}</p>
+
+            {/* Intro */}
+            <p className="mt-1 text-[10px] text-white/80 italic leading-tight max-w-[200px]">
+              “{profile.intro}”
+            </p>
 
             {/* Links */}
-            <div className="flex flex-col gap-2 w-full px-3 pt-3">
+            <div className="flex flex-col gap-1.5 w-full mt-3">
               <a
                 href="https://luminhtri.profile.io.vn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-white/15 to-white/10 p-2 shadow hover:from-white/25 hover:to-white/20 transition-all duration-300 max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap mx-auto"
+                className="flex items-center justify-center gap-1.5 rounded-full bg-white/10 p-1.5 hover:bg-white/20 transition-all text-[10px]"
               >
-                <GlobeIcon className="w-4 h-4 text-white flex-shrink-0" />
-                <span className="text-[11px] text-white font-medium">
-                  luminhtri.profile.io.vn
-                </span>
+                <GlobeIcon className="w-3.5 h-3.5 text-white" />
+                luminhtri.profile.io.vn
               </a>
-
               <a
                 href={`mailto:${profile.socials.email}`}
-                className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-white/15 to-white/10 p-2 shadow hover:from-white/25 hover:to-white/20 transition-all duration-300 max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap mx-auto"
+                className="flex items-center justify-center gap-1.5 rounded-full bg-white/10 p-1.5 hover:bg-white/20 transition-all text-[10px]"
               >
-                <MailIcon className="w-4 h-4 text-white flex-shrink-0" />
-                <span className="text-[11px] text-white">
-                  {profile.socials.email}
-                </span>
+                <MailIcon className="w-3.5 h-3.5 text-white" />
+                {profile.socials.email}
               </a>
-
               <a
                 href={`tel:${profile.phone}`}
-                className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-white/15 to-white/10 p-2 shadow hover:from-white/25 hover:to-white/20 transition-all duration-300 max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap mx-auto"
+                className="flex items-center justify-center gap-1.5 rounded-full bg-white/10 p-1.5 hover:bg-white/20 transition-all text-[10px]"
               >
-                <PhoneIcon className="w-4 h-4 text-white flex-shrink-0" />
-                <span className="text-[11px] text-white">{profile.phone}</span>
+                <PhoneIcon className="w-3.5 h-3.5 text-white" />
+                {profile.phone}
               </a>
             </div>
 
             {/* Social icons */}
-            <div className="flex justify-center gap-5 pt-2">
-              <a
-                href={profile.socials.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              >
-                <FacebookIcon className="w-5 h-5 text-white hover:scale-125 transition-transform" />
+            <div className="flex justify-center gap-4 mt-2">
+              <a href={profile.socials.facebook} target="_blank" rel="noreferrer">
+                <FacebookIcon className="w-4 h-4 text-white hover:scale-125 transition-transform" />
               </a>
-              <a
-                href={`https://zalo.me/${profile.socials.zalo}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Zalo"
-              >
-                <MessageCircleIcon className="w-5 h-5 text-white hover:scale-125 transition-transform" />
+              <a href={`https://zalo.me/${profile.socials.zalo}`} target="_blank" rel="noreferrer">
+                <MessageCircleIcon className="w-4 h-4 text-white hover:scale-125 transition-transform" />
               </a>
             </div>
 
-            {/* Footer */}
-            <div className="text-[10px] text-gray-200 leading-tight pt-3">
-              <p>{profile.location}</p>
-              <p className="pt-0.5">Ngôn ngữ: {profile.language.join(' ')}</p>
-              <p className="text-[9px] text-white/50 pt-1">© 2025 HYPER ME</p>
+            {/* ✅ QR code ở giữa rõ ràng */}
+            <div className="flex flex-col items-center justify-center mt-3">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://luminhtri.profile.io.vn"
+                alt="QR Code"
+                className="w-24 h-24 rounded-md border border-white/40 bg-white/10 shadow-[0_0_18px_rgba(255,255,255,0.3)]"
+              />
+              <p className="text-[10px] text-white/80 mt-1">
+                Quét để xem hồ sơ
+              </p>
             </div>
-          </div>
+
+            {/* Footer nhỏ gọn */}
+            <div className="text-[9px] text-white/60 leading-tight mt-2">
+              <p>{profile.location}</p>
+              <p>Ngôn ngữ: {profile.language.join(' ')}</p>
+              <p className="text-[8px] text-white/40">© 2025 HYPER ME</p>
+            </div>
+          </motion.div>
         </div>
       </div>
 
