@@ -64,12 +64,27 @@ export const Hero: React.FC = () => {
           </span>
         </h1>
 
-        <p className="mt-2 text-sm sm:text-lg text-gray-700 font-medium px-5 sm:px-0">
-          Trang cá nhân có địa chỉ web riêng của bạn.{" "}
-          <span className="text-[#00b8ff] font-semibold">
-            Nổi bật. Đơn giản. Chuyên nghiệp.
-          </span>
+        {/* Hai dòng mô tả tách riêng */}
+        <p className="mt-3 text-sm sm:text-lg text-gray-700 font-medium">
+          Trang cá nhân có địa chỉ web riêng của bạn.
         </p>
+        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
+          Nổi bật. Đơn giản. Chuyên nghiệp.
+        </p>
+
+        {/* CTA lớn */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+          className="mt-6 inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-5 
+                     bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] 
+                     rounded-full shadow-[0_0_25px_rgba(0,184,255,0.3)] 
+                     text-white font-extrabold text-base sm:text-lg whitespace-nowrap 
+                     hover:shadow-[0_0_35px_rgba(0,184,255,0.5)] tracking-wide"
+          onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
+        >
+          🚀 TẠO HỒ SƠ NGAY
+        </motion.button>
       </motion.div>
 
       {/* Mockup */}
