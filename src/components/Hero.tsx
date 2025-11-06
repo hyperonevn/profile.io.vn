@@ -23,11 +23,11 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Hiệu ứng hạt nền */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-[#a3cfff]/40"
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#a3cfff]/40 pointer-events-none"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -58,6 +58,7 @@ export const Hero: React.FC = () => {
           <HyperMELogo className="w-40 sm:w-60 drop-shadow-[0_0_25px_rgba(0,184,255,0.3)]" />
         </motion.div>
 
+        {/* 🇻🇳 Tiêu đề tiếng Việt */}
         <h1 className="mt-6 text-2xl sm:text-4xl font-extrabold leading-snug text-gray-900 px-3 lg:px-0">
           <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
             &lt;Tên bạn&gt;.profile.io.vn
@@ -67,23 +68,37 @@ export const Hero: React.FC = () => {
         <p className="mt-3 text-sm sm:text-lg text-gray-700 font-medium">
           Trang cá nhân có địa chỉ web riêng của bạn.
         </p>
-        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
+        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold mb-4">
           Nổi bật. Đơn giản. Chuyên nghiệp.
         </p>
 
+        {/* 🇬🇧 English version */}
+        <h2 className="text-xl sm:text-3xl font-extrabold leading-snug text-gray-900">
+          <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
+            &lt;YourName&gt;.profile.io.vn
+          </span>
+        </h2>
+        <p className="mt-3 text-sm sm:text-lg text-gray-700 font-medium">
+          Your personal website link that represents you.
+        </p>
+        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
+          Stand out. Simple. Professional.
+        </p>
+
+        {/* Nút CTA */}
         <motion.a
           href="https://form.profile.hyperonevn.com"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
-          className="mt-6 inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-5 
+          className="z-20 mt-6 inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-5 
                      bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] 
                      rounded-full shadow-[0_0_25px_rgba(0,184,255,0.3)] 
                      text-white font-extrabold text-base sm:text-lg whitespace-nowrap 
                      hover:shadow-[0_0_35px_rgba(0,184,255,0.5)] tracking-wide"
         >
-          🚀 TẠO HỒ SƠ NGAY
+          🚀 TẠO HỒ SƠ / CREATE PROFILE
         </motion.a>
       </motion.div>
 
@@ -92,7 +107,7 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-0 flex justify-center lg:justify-end lg:w-1/2"
+        className="relative z-10 flex justify-center lg:justify-end lg:w-1/2 pointer-events-none"
       >
         <AnimatedMockup />
       </motion.div>
