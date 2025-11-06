@@ -27,19 +27,6 @@ export const Story: React.FC = () => {
     },
   ];
 
-  // ✅ Cuộn mượt đến section Hero
-  const handleScrollToHero = () => {
-    const hero = document.getElementById('hero');
-    if (hero) {
-      hero.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    } else {
-      console.warn('Không tìm thấy section hero.');
-    }
-  };
-
   return (
     <section
       id="story"
@@ -115,15 +102,17 @@ export const Story: React.FC = () => {
             Hãy bắt đầu ngay hôm nay, vì thế giới sẽ chỉ biết đến người dám kể câu chuyện của chính mình.
           </p>
 
-          {/* ✅ Nút cuộn lên Hero */}
-          <motion.button
-            onClick={handleScrollToHero}
+          {/* ✅ Nút mở link đăng ký */}
+          <motion.a
+            href="https://form.profile.hyperonevn.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center mt-5 sm:mt-6 px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] rounded-full text-white text-sm sm:text-lg font-semibold hover:shadow-[0_0_35px_rgba(0,184,255,0.4)] transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
           >
             🚀 Tạo hồ sơ của bạn ngay
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>

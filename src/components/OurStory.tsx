@@ -5,12 +5,6 @@ import { useInView } from 'react-intersection-observer';
 export const OurStory: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  // ✅ Cuộn mượt lên Hero section
-  const handleScrollToHero = () => {
-    const heroSection = document.getElementById('hero');
-    if (heroSection) heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <section
       ref={ref}
@@ -103,14 +97,16 @@ export const OurStory: React.FC = () => {
               và mỗi câu chuyện đều được kể bằng trái tim.
             </p>
 
-            <motion.button
-              onClick={handleScrollToHero}
+            <motion.a
+              href="https://form.profile.hyperonevn.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-[#00b8ff] to-[#8b5cf6] text-white rounded-full font-semibold text-sm sm:text-base shadow-md hover:shadow-[0_0_25px_rgba(0,184,255,0.5)] transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
             >
               🚀 Tạo hồ sơ của bạn ngay
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

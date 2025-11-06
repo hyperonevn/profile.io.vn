@@ -59,10 +59,31 @@ export const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* GẠCH NGĂN + COPYRIGHT */}
+        {/* GẠCH NGĂN */}
         <div className="w-full h-[1px] bg-gray-800 my-5 opacity-60" />
 
-        <p className="text-[11px] text-gray-500">
+        {/* TRI ÂN */}
+        {/* TRI ÂN */}
+        <motion.p
+          initial={{ opacity: 0, y: 5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-[11px] sm:text-xs text-gray-400"
+        >
+          Honoring{' '}
+          <span className="font-semibold" style={{ color: '#D4AF37' }}>
+            Trương Nhật Linh
+          </span>{' '}
+          ·{' '}
+          <span className="font-medium" style={{ color: '#C0C0C0' }}>
+            Founding Inspiration Partner
+          </span>{' '}
+          of <span className="text-white font-semibold">HYPER ME</span>
+        </motion.p>
+
+
+        {/* COPYRIGHT */}
+        <p className="text-[11px] text-gray-500 mt-1">
           © {year} HYPER ONE CO., LTD · All rights reserved.
         </p>
       </div>
