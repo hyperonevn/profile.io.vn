@@ -7,10 +7,10 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col lg:flex-row items-center justify-center min-h-screen bg-gradient-to-b from-[#f9fbff] via-[#f3f0ff] to-white text-gray-900 px-6 lg:px-20 pt-16 sm:pt-24 pb-24 overflow-visible"
+      className="relative flex flex-col lg:flex-row items-center justify-between min-h-screen bg-gradient-to-b from-[#f9fbff] via-[#f3f0ff] to-white text-gray-900 px-6 lg:px-20 pt-16 sm:pt-24 pb-24 overflow-hidden"
     >
       {/* Góc phải: Powered by */}
-      <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/60 px-3 py-1 rounded-full text-[10px] sm:text-xs border border-gray-300 shadow-sm z-20">
+      <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/60 px-3 py-1 rounded-full text-[10px] sm:text-xs border border-gray-300 shadow-sm z-30">
         <span className="text-gray-600">Powered by</span>
         <a
           href="https://hyperonevn.com"
@@ -42,12 +42,12 @@ export const Hero: React.FC = () => {
         ))}
       </div>
 
-      {/* Cột trái: Logo + tiêu đề + CTA */}
+      {/* Cột trái */}
       <motion.div
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="z-10 text-center lg:text-left mb-10 lg:mb-0 lg:w-1/2 max-w-xl"
+        className="relative z-20 w-full lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0"
       >
         <motion.div
           className="relative flex justify-center lg:justify-start"
@@ -58,14 +58,15 @@ export const Hero: React.FC = () => {
           <HyperMELogo className="w-40 sm:w-60 drop-shadow-[0_0_25px_rgba(0,184,255,0.3)]" />
         </motion.div>
 
+        {/* Tiêu đề */}
         <h1 className="mt-6 text-2xl sm:text-4xl font-extrabold leading-snug text-gray-900 px-3 lg:px-0">
           <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
             &lt;Tên bạn&gt;.profile.io.vn
           </span>
         </h1>
 
-        {/* 🇻🇳 & 🇬🇧 song ngữ */}
-        <div className="mt-3 space-y-1 sm:space-y-2">
+        {/* Song ngữ */}
+        <div className="mt-4 space-y-1 sm:space-y-2">
           <p className="text-sm sm:text-lg text-gray-700 font-medium">
             Trang cá nhân có địa chỉ web riêng của bạn.
           </p>
@@ -74,20 +75,21 @@ export const Hero: React.FC = () => {
           </p>
 
           <p className="text-sm sm:text-lg text-gray-700 font-medium pt-2">
-            Your personal website that truly represents you.
+            Your own personal website, designed just for you.
           </p>
           <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
             Stand out. Simple. Professional.
           </p>
         </div>
 
+        {/* CTA */}
         <motion.a
           href="https://form.profile.hyperonevn.com"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
-          className="z-20 mt-6 inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-5 
+          className="z-30 mt-6 inline-flex items-center justify-center px-10 sm:px-12 py-4 sm:py-5 
                      bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] 
                      rounded-full shadow-[0_0_25px_rgba(0,184,255,0.3)] 
                      text-white font-extrabold text-base sm:text-lg whitespace-nowrap 
@@ -99,10 +101,10 @@ export const Hero: React.FC = () => {
 
       {/* Cột phải: Mockup */}
       <motion.div
-        initial={{ opacity: 0, x: 30 }}
+        initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-10 flex justify-center lg:justify-end lg:w-1/2 pointer-events-none"
+        className="relative z-10 w-full lg:w-1/2 flex justify-center lg:justify-end pointer-events-none"
       >
         <AnimatedMockup />
       </motion.div>
