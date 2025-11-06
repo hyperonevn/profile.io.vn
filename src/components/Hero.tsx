@@ -58,34 +58,29 @@ export const Hero: React.FC = () => {
           <HyperMELogo className="w-40 sm:w-60 drop-shadow-[0_0_25px_rgba(0,184,255,0.3)]" />
         </motion.div>
 
-        {/* 🇻🇳 Tiêu đề tiếng Việt */}
         <h1 className="mt-6 text-2xl sm:text-4xl font-extrabold leading-snug text-gray-900 px-3 lg:px-0">
           <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
             &lt;Tên bạn&gt;.profile.io.vn
           </span>
         </h1>
 
-        <p className="mt-3 text-sm sm:text-lg text-gray-700 font-medium">
-          Trang cá nhân có địa chỉ web riêng của bạn.
-        </p>
-        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold mb-4">
-          Nổi bật. Đơn giản. Chuyên nghiệp.
-        </p>
+        {/* 🇻🇳 & 🇬🇧 song ngữ */}
+        <div className="mt-3 space-y-1 sm:space-y-2">
+          <p className="text-sm sm:text-lg text-gray-700 font-medium">
+            Trang cá nhân có địa chỉ web riêng của bạn.
+          </p>
+          <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
+            Nổi bật. Đơn giản. Chuyên nghiệp.
+          </p>
 
-        {/* 🇬🇧 English version */}
-        <h2 className="text-xl sm:text-3xl font-extrabold leading-snug text-gray-900">
-          <span className="bg-gradient-to-r from-[#00b8ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
-            &lt;YourName&gt;.profile.io.vn
-          </span>
-        </h2>
-        <p className="mt-3 text-sm sm:text-lg text-gray-700 font-medium">
-          Your personal website link that represents you.
-        </p>
-        <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
-          Stand out. Simple. Professional.
-        </p>
+          <p className="text-sm sm:text-lg text-gray-700 font-medium pt-2">
+            Your personal website that truly represents you.
+          </p>
+          <p className="text-sm sm:text-lg text-[#00b8ff] font-semibold">
+            Stand out. Simple. Professional.
+          </p>
+        </div>
 
-        {/* Nút CTA */}
         <motion.a
           href="https://form.profile.hyperonevn.com"
           target="_blank"
