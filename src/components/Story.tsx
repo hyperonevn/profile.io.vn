@@ -3,6 +3,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HeartIcon, SparklesIcon, UsersIcon } from 'lucide-react';
 
+/**
+ * 🌏 HYPER ME – Story Section
+ * SEO + Emotionally optimized
+ * → Tăng khả năng hiểu ngữ nghĩa “Danh thiếp điện tử miễn phí”
+ * → Giữ toàn bộ animation mượt, nhẹ, cảm xúc
+ */
 export const Story: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
@@ -33,12 +39,31 @@ export const Story: React.FC = () => {
       ref={ref}
       className="relative py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-white via-[#f9f9ff] to-[#eef5ff] overflow-hidden"
     >
-      {/* Background Accent */}
+      {/* 🌈 Background Accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b8ff]/5 to-transparent" />
       <div className="absolute -top-32 -right-32 w-[380px] h-[380px] bg-gradient-to-br from-[#00b8ff]/10 to-[#8b5cf6]/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto max-w-6xl relative z-10 text-center">
-        {/* Title */}
+        {/* 🧩 SEO Hero Intro */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+            Danh thiếp điện tử miễn phí cho người Việt
+          </h1>
+          <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+            <strong>HYPER ME</strong> là nền tảng tạo{' '}
+            <strong>danh thiếp điện tử</strong> hiện đại, giúp bạn định danh bản thân
+            trong thế giới số, gắn thương hiệu cá nhân với domain{' '}
+            <code className="bg-gray-100 text-gray-800 px-1 rounded">.io.vn</code>.  
+            Chỉ vài phút để khởi tạo <strong>hồ sơ cá nhân</strong> của bạn – hoàn toàn miễn phí.
+          </p>
+        </motion.div>
+
+        {/* 🇻🇳 Section Title */}
         <motion.h2
           className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug sm:leading-tight"
           initial={{ opacity: 0, y: 40 }}
@@ -60,12 +85,11 @@ export const Story: React.FC = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <span className="font-semibold text-[#00b8ff]">HYPER ME</span> không chỉ là một nền tảng mà còn là một phong trào.  
-          Nơi người Việt Nam tự tin bước ra thế giới,  
-          mang theo câu chuyện, giá trị và lòng tự tôn dân tộc,  
+          Nơi người Việt Nam tự tin bước ra thế giới, mang theo câu chuyện, giá trị và lòng tự tôn dân tộc,  
           được viết nên bằng sức mạnh của công nghệ và niềm tin vào chính mình.
         </motion.p>
 
-        {/* Features */}
+        {/* 🌟 Feature Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 px-2">
           {features.map((feature, index) => (
             <motion.div
@@ -88,7 +112,22 @@ export const Story: React.FC = () => {
           ))}
         </div>
 
-        {/* Closing */}
+        {/* 🧭 Feature explanation (SEO-friendly narrative) */}
+        <motion.div
+          className="mt-12 text-gray-700 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.9, duration: 0.8 }}
+        >
+          <p>
+            Với <strong>HYPER ME</strong>, bạn có thể tạo <strong>danh thiếp điện tử miễn phí</strong> chỉ trong vài phút — 
+            chọn giao diện yêu thích, thêm thông tin cá nhân, và nhận ngay liên kết{' '}
+            <code className="bg-gray-100 text-gray-800 px-1 rounded">tênbạn.profile.io.vn</code> 
+            để chia sẻ với đối tác, khách hàng, hoặc bạn bè.
+          </p>
+        </motion.div>
+
+        {/* 🏁 Closing CTA */}
         <motion.div
           className="mt-16 sm:mt-24 space-y-3 sm:space-y-4"
           initial={{ opacity: 0, y: 40 }}
@@ -99,10 +138,9 @@ export const Story: React.FC = () => {
             Người Việt định danh thế giới số
           </p>
           <p className="text-gray-600 text-sm sm:text-lg md:text-xl font-medium">
-            Hãy bắt đầu ngay hôm nay, vì thế giới sẽ chỉ biết đến người dám kể câu chuyện của chính mình.
+            Hãy bắt đầu ngay hôm nay — vì thế giới sẽ chỉ biết đến người dám kể câu chuyện của chính mình.
           </p>
 
-          {/* ✅ Nút mở link đăng ký */}
           <motion.a
             href="https://form.profile.hyperonevn.com"
             target="_blank"

@@ -2,6 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+/**
+ * 🌍 OUR STORY – HYPER ME
+ * Giữ chất văn – thêm lớp SEO tự nhiên (Google hiểu chủ đề)
+ * → Tăng khả năng xuất hiện khi người dùng tìm "danh thiếp điện tử", "hồ sơ cá nhân người Việt", "HYPER ME"
+ */
 export const OurStory: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
@@ -10,11 +15,12 @@ export const OurStory: React.FC = () => {
       ref={ref}
       className="relative py-20 sm:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-white via-[#f9f9ff] to-[#eef5ff]"
     >
-      {/* Background accent */}
+      {/* 🌈 Background accents */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b8ff]/5 to-transparent" />
       <div className="absolute -top-24 left-0 w-[340px] sm:w-[420px] h-[340px] sm:h-[420px] bg-gradient-to-br from-[#00b8ff]/10 to-[#8b5cf6]/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto max-w-2xl relative z-10 text-center">
+        {/* 🧭 Section title */}
         <motion.h2
           className="text-2xl sm:text-4xl font-extrabold text-gray-900 leading-snug mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -26,6 +32,23 @@ export const OurStory: React.FC = () => {
           </span>
         </motion.h2>
 
+        {/* 🪶 SEO-friendly intro */}
+        <motion.div
+          className="text-gray-700 text-sm sm:text-base mb-10 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <p>
+            <strong>HYPER ME</strong> là nền tảng{' '}
+            <strong>danh thiếp điện tử miễn phí</strong> đầu tiên mang bản sắc Việt.  
+            Nơi mỗi người có thể tạo <strong>hồ sơ cá nhân chuyên nghiệp</strong>, chia sẻ qua QR code hoặc link{' '}
+            <code className="bg-gray-100 text-gray-800 px-1 rounded">tênbạn.profile.io.vn</code>,  
+            và kể câu chuyện thật của mình bằng công nghệ và cảm xúc.
+          </p>
+        </motion.div>
+
+        {/* 🩵 Main story */}
         <motion.div
           className="space-y-5 sm:space-y-7 text-gray-700 text-sm sm:text-base leading-relaxed sm:leading-loose"
           initial={{ opacity: 0, y: 20 }}
@@ -43,10 +66,10 @@ export const OurStory: React.FC = () => {
           <p>
             Ở mỗi châu lục, con người đều có nơi để kể câu chuyện của mình.  
             Instagram để chia sẻ, LinkedIn để làm việc, TikTok để thể hiện cá tính.  
-            Nhưng khi ai đó hỏi:{" "}
+            Nhưng khi ai đó hỏi:{' '}
             <span className="font-semibold bg-gradient-to-r from-[#DA251D] to-[#FFD700] bg-clip-text text-transparent">
-              "Người Việt Nam là ai?"
-            </span>{" "}
+              “Người Việt Nam là ai?”
+            </span>{' '}
             chúng tôi nhận ra, vẫn chưa có không gian nào đủ gần gũi để kể điều đó.
           </p>
 
@@ -59,10 +82,10 @@ export const OurStory: React.FC = () => {
           </p>
 
           <p>
-            Từ mong muốn ấy,{" "}
-            <span className="font-semibold text-[#00b8ff]">HYPER ME</span> được sinh ra.  
-            Không để chạy theo mạng xã hội,  
-            mà để giữ lại những giá trị riêng của người Việt.  
+            Từ mong muốn ấy,{' '}
+            <span className="font-semibold text-[#00b8ff]">HYPER ME</span> được sinh ra —  
+            không để chạy theo mạng xã hội,  
+            mà để lưu giữ những giá trị riêng của người Việt.  
             Một nơi nhỏ bé, ấm áp và thật.
           </p>
 
@@ -75,13 +98,13 @@ export const OurStory: React.FC = () => {
           <p>
             Dù bạn ở châu Á, châu Âu hay bên kia quả địa cầu,  
             chỉ với một đường link hay một mã QR,  
-            bạn có thể nói với thế giới:{" "}
+            bạn có thể nói với thế giới:{' '}
             <span className="font-bold bg-gradient-to-r from-[#DA251D] to-[#FFD700] bg-clip-text text-transparent">
-              "Đây là tôi. Tôi là người Việt Nam."
+              “Đây là tôi. Tôi là người Việt Nam.”
             </span>
           </p>
 
-          {/* ✅ CTA cuối có nút */}
+          {/* 💫 CTA block */}
           <motion.div
             className="pt-10 sm:pt-14"
             initial={{ opacity: 0, y: 20 }}
